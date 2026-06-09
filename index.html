@@ -19,7 +19,7 @@
   .nav-links{display:flex;gap:2rem;list-style:none;}
   .nav-links a{color:var(--gray);text-decoration:none;font-size:.9rem;font-weight:600;letter-spacing:.5px;transition:.2s;text-transform:uppercase;}
   .nav-links a:hover{color:var(--gold);}
-  .nav-cta{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;padding:.5rem 1.25rem;border-radius:6px;font-weight:700;font-size:.85rem;text-decoration:none;transition:.2s;letter-spacing:.5px;}
+  .nav-cta{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;padding:.5rem 1.25rem;border-radius:6px;font-weight:700;font-size:.85rem;text-decoration:none;transition:.2s;letter-spacing:.5px;cursor:pointer;}
   .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,184,122,.4);}
   section{padding:100px 5%;min-height:100vh;display:flex;flex-direction:column;justify-content:center;}
   .section-label{font-size:.8rem;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;}
@@ -32,7 +32,7 @@
   .hero-text h1{margin-bottom:1.5rem;}
   .hero-sub{font-size:1.15rem;color:var(--gray);line-height:1.7;max-width:560px;margin-bottom:2rem;}
   .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
-  .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);padding:.85rem 2rem;border-radius:8px;font-weight:800;font-size:1rem;text-decoration:none;transition:.2s;display:inline-block;}
+  .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);padding:.85rem 2rem;border-radius:8px;font-weight:800;font-size:1rem;text-decoration:none;transition:.2s;display:inline-block;cursor:pointer;border:none;}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(240,192,64,.35);}
   .btn-secondary{border:2px solid var(--green);color:var(--green2);padding:.85rem 2rem;border-radius:8px;font-weight:700;font-size:1rem;text-decoration:none;transition:.2s;display:inline-block;}
   .btn-secondary:hover{background:var(--green);color:#fff;transform:translateY(-2px);}
@@ -173,7 +173,7 @@
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Book a Call</a>
+    <button class="nav-cta" onclick="openCalModal()">Book a Call</button>
   </div>
 </nav>
 
@@ -184,7 +184,7 @@
     <h1>Turn More Leads<br>Into <span class="accent">Closed Deals</span></h1>
     <p class="hero-sub" contenteditable="false">Whether you're a real estate professional, a small business owner, or an individual looking to leverage AI — I build smart systems that <strong>save time, convert leads, and grow your business</strong> through marketing, automation, and AI-powered workflows.</p>
     <div class="hero-btns">
-      <a href="#contact" class="btn-primary">📅 Book a Free Growth Assessment</a>
+      <button class="btn-primary" onclick="openCalModal()">📅 Book a Free Growth Assessment</button>
       <a href="#services" class="btn-secondary">See What I Do</a>
     </div>
     <div class="stats-row">
@@ -210,7 +210,7 @@
     </div>
     <div class="about-text">
       <h2>I'm <span class="accent">Nathan Jovinz</span></h2><br>
-      <p contenteditable="false">I combine experience in digital marketing, and AI-powered systems to help real estate professionals, small business owners, and individuals operate more efficiently — so they can focus on what matters most: <strong style="color:var(--green2)">growing their business and serving their clients.</strong></p>
+      <p contenteditable="false">I combine experience in digital marketing and AI-powered systems to help real estate professionals, small business owners, and individuals operate more efficiently — so they can focus on what matters most: <strong style="color:var(--green2)">growing their business and serving their clients.</strong></p>
       <p contenteditable="false">My approach is built around business outcomes, not vanity metrics. Every system I build, every campaign I manage, and every automation I create is designed with one goal — to generate real, measurable growth for you and your business.</p>
       <p contenteditable="false">I've worked with agents, brokers, investors, small business owners, and individuals to transform their sales processes, automate repetitive tasks, and create predictable pipelines that convert.</p>
       <div class="tag-row">
@@ -331,24 +331,34 @@
         <li><span class="dot"></span><span contenteditable="false">No fluff — only results-focused conversation</span></li>
         <li><span class="dot"></span><span contenteditable="false">Real estate, small business & AI expertise</span></li>
       </ul>
+      <div style="margin-top:2rem;display:flex;flex-direction:column;gap:1rem;">
+        <a href="mailto:nate.youraiautomator@gmail.com" style="display:flex;align-items:center;gap:.75rem;color:var(--white);text-decoration:none;font-weight:600;transition:.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--white)'">
+          <div style="width:40px;height:40px;background:rgba(240,192,64,.1);border:1px solid rgba(240,192,64,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">📧</div>
+          nate.youraiautomator@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/nathan-jovinz/" target="_blank" style="display:flex;align-items:center;gap:.75rem;color:var(--white);text-decoration:none;font-weight:600;transition:.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--white)'">
+          <div style="width:40px;height:40px;background:rgba(0,119,181,.2);border:1px solid rgba(0,119,181,.4);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">💼</div>
+          linkedin.com/in/nathan-jovinz
+        </a>
+      </div>
     </div>
     <div class="contact-form">
-      <div class="form-group"><label>Your Name</label><input type="text" placeholder="e.g. John Smith"></div>
-      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com"></div>
+      <div class="form-group"><label>Your Name</label><input type="text" id="contact-name" placeholder="e.g. John Smith"></div>
+      <div class="form-group"><label>Email Address</label><input type="email" id="contact-email" placeholder="you@example.com"></div>
       <div class="form-group"><label>I Am A...</label>
-        <select>
+        <select id="contact-type">
+          <option>Entrepreneur / Startup</option>
+          <option>Individual seeking AI Automation</option>
+          <option>Property Manager</option>
           <option>Real Estate Agent</option>
           <option>Real Estate Broker</option>
           <option>Real Estate Investor</option>
           <option>Small Business Owner</option>
-          <option>Entrepreneur / Startup</option>
-          <option>Individual seeking AI Automation</option>
-          <option>Property Manager</option>
           <option>Other</option>
         </select>
       </div>
-      <div class="form-group"><label>What's Your Biggest Challenge?</label><textarea placeholder="Tell me about your current challenges..."></textarea></div>
-      <button class="submit-btn" onclick="openCalModal()">📅 Book My Free Growth Assessment</button>
+      <div class="form-group"><label>What's Your Biggest Challenge?</label><textarea id="contact-challenge" placeholder="Tell me about your current challenges..."></textarea></div>
+      <button class="submit-btn" onclick="submitAndBook()">📅 Book My Free Growth Assessment</button>
     </div>
   </div>
 </section>
@@ -356,6 +366,10 @@
 <footer>
   <p>© 2025 <span>Nathan Jovinz</span> · AI-Powered Sales Growth & Marketing Systems</p>
   <p style="margin-top:.5rem;font-size:.8rem;">Helping businesses close more deals through smarter systems.</p>
+  <div style="display:flex;justify-content:center;gap:2rem;margin-top:1rem;">
+    <a href="mailto:nate.youraiautomator@gmail.com" style="color:var(--gray);text-decoration:none;font-size:.85rem;transition:.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">📧 nate.youraiautomator@gmail.com</a>
+    <a href="https://www.linkedin.com/in/nathan-jovinz/" target="_blank" style="color:var(--gray);text-decoration:none;font-size:.85rem;transition:.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">💼 LinkedIn</a>
+  </div>
 </footer>
 
 <!-- CALENDLY MODAL -->
@@ -396,29 +410,93 @@
 </div>
 
 <script>
-  const PASS="nathan2025";
-  let editMode=false;
+window.addEventListener('DOMContentLoaded', function() {
 
-  function toggleEditMode(){if(editMode){exitEdit();}else{document.getElementById('modal-overlay').style.display='flex';setTimeout(()=>document.getElementById('pwd-input').focus(),100);}}
-  function closeModal(){document.getElementById('modal-overlay').style.display='none';document.getElementById('pwd-input').value='';document.getElementById('pwd-error').style.display='none';}
-  function checkPwd(){const v=document.getElementById('pwd-input').value;if(v===PASS){closeModal();enterEdit();}else{document.getElementById('pwd-error').style.display='block';document.getElementById('pwd-input').value='';}}
-  function enterEdit(){editMode=true;document.body.classList.add('edit-mode');document.querySelectorAll('[contenteditable]').forEach(el=>el.setAttribute('contenteditable','true'));document.getElementById('lock-btn').textContent='🔓 Exit Edit Mode';document.getElementById('lock-btn').style.background='var(--green2)';document.getElementById('edit-badge').style.display='block';document.getElementById('upload-area').style.display='block';}
-  function exitEdit(){editMode=false;document.body.classList.remove('edit-mode');document.querySelectorAll('[contenteditable]').forEach(el=>el.setAttribute('contenteditable','false'));document.getElementById('lock-btn').textContent='🔒 Edit My Site';document.getElementById('lock-btn').style.background='var(--gold)';document.getElementById('edit-badge').style.display='none';document.getElementById('upload-area').style.display='none';}
+  // ---- PASSWORDS & EDIT MODE ----
+  var PASS = "nathan2025";
+  var editMode = false;
 
-  const CALENDLY_URL="https://calendly.com/nathanjovinz/30min";
-  function openCalModal(){document.getElementById('cal-iframe').src=CALENDLY_URL;document.getElementById('cal-modal-overlay').classList.add('open');document.body.style.overflow='hidden';}
-  function closeCalModal(){document.getElementById('cal-modal-overlay').classList.remove('open');document.getElementById('cal-iframe').src='';document.body.style.overflow='';}
-  document.getElementById('cal-modal-overlay').addEventListener('click',function(e){if(e.target===this)closeCalModal();});
-  document.querySelectorAll('a[href="#contact"]').forEach(el=>{el.addEventListener('click',function(e){e.preventDefault();openCalModal();});});
+  window.toggleEditMode = function() {
+    if (editMode) { exitEdit(); } else {
+      document.getElementById('modal-overlay').style.display = 'flex';
+      setTimeout(function(){ document.getElementById('pwd-input').focus(); }, 100);
+    }
+  };
+  window.closeModal = function() {
+    document.getElementById('modal-overlay').style.display = 'none';
+    document.getElementById('pwd-input').value = '';
+    document.getElementById('pwd-error').style.display = 'none';
+  };
+  window.checkPwd = function() {
+    var v = document.getElementById('pwd-input').value;
+    if (v === PASS) { closeModal(); enterEdit(); }
+    else { document.getElementById('pwd-error').style.display = 'block'; document.getElementById('pwd-input').value = ''; }
+  };
+  function enterEdit() {
+    editMode = true;
+    document.body.classList.add('edit-mode');
+    document.querySelectorAll('[contenteditable]').forEach(function(el){ el.setAttribute('contenteditable','true'); });
+    document.getElementById('lock-btn').textContent = '🔓 Exit Edit Mode';
+    document.getElementById('lock-btn').style.background = 'var(--green2)';
+    document.getElementById('edit-badge').style.display = 'block';
+    document.getElementById('upload-area').style.display = 'block';
+  }
+  function exitEdit() {
+    editMode = false;
+    document.body.classList.remove('edit-mode');
+    document.querySelectorAll('[contenteditable]').forEach(function(el){ el.setAttribute('contenteditable','false'); });
+    document.getElementById('lock-btn').textContent = '🔒 Edit My Site';
+    document.getElementById('lock-btn').style.background = 'var(--gold)';
+    document.getElementById('edit-badge').style.display = 'none';
+    document.getElementById('upload-area').style.display = 'none';
+  }
 
-  function openLightbox(src){document.getElementById('lightbox-img').src=src;document.getElementById('lightbox').classList.add('open');}
-  function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
+  // ---- CALENDLY ----
+  var CALENDLY_URL = "https://calendly.com/nathanjovinz/30min";
 
-  const CATS={marketing:'📣 Digital Marketing',automation:'🤖 AI Automations & Integration',graphics:'🎨 Graphics',plan:'📋 30-60-90 Plan'};
-  const COL_ORDER=['marketing','automation','graphics','plan'];
-  const BASE="https://nathanjovinz.github.io";
+  window.openCalModal = function() {
+    document.getElementById('cal-iframe').src = CALENDLY_URL;
+    document.getElementById('cal-modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeCalModal = function() {
+    document.getElementById('cal-modal-overlay').classList.remove('open');
+    document.getElementById('cal-iframe').src = '';
+    document.body.style.overflow = '';
+  };
+  document.getElementById('cal-modal-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeCalModal();
+  });
 
-  let portfolioItems=[
+  window.submitAndBook = function() {
+    var name = document.getElementById('contact-name').value.trim();
+    var email = document.getElementById('contact-email').value.trim();
+    var type = document.getElementById('contact-type').value;
+    var challenge = document.getElementById('contact-challenge').value.trim();
+    if (!name) { alert('Please enter your name.'); return; }
+    if (!email) { alert('Please enter your email address.'); return; }
+    var params = new URLSearchParams({ name: name, email: email, a1: type + (challenge ? ' — ' + challenge : '') });
+    document.getElementById('cal-iframe').src = CALENDLY_URL + '?' + params.toString();
+    document.getElementById('cal-modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  // ---- LIGHTBOX ----
+  window.openLightbox = function(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  };
+  window.closeLightbox = function() {
+    document.getElementById('lightbox').classList.remove('open');
+  };
+
+  // ---- PORTFOLIO ----
+  var CATS = { marketing:'📣 Digital Marketing', automation:'🤖 AI Automations & Integration', graphics:'🎨 Graphics', plan:'📋 30-60-90 Plan' };
+  var COL_ORDER = ['marketing','automation','graphics','plan'];
+  var BASE = "https://nathanjovinz.github.io";
+  var activeTab = 'all';
+
+  var portfolioItems = [
     {id:1,cat:'marketing',type:'pdf',src:BASE+'/pdfs/coach_consultant_acquisition_system.pdf',cover:BASE+'/images/dm_cover1.PNG',label:'Coach & Consultant Acquisition System'},
     {id:2,cat:'marketing',type:'pdf',src:BASE+'/pdfs/luxury_condo_marketing_strategy (1).pdf',cover:BASE+'/images/dm_cover2.PNG',label:'Luxury Condo Marketing Strategy'},
     {id:3,cat:'marketing',type:'pdf',src:BASE+'/pdfs/medical_aesthetics_growth_strategy.pdf',cover:BASE+'/images/dm_cover3.PNG',label:'Medical Aesthetics Growth Strategy'},
@@ -431,94 +509,95 @@
     {id:10,cat:'plan',type:'image',src:BASE+'/images/060.PNG',label:'60 Day Plan'},
   ];
 
-  let activeTab='all';
-
-  function makeItem(item){
-    const div=document.createElement('div');
-    div.className='portfolio-item';
-    if(item.type==='image'){
-      div.innerHTML=`<img src="${item.src}" alt="${item.label}"><div class="portfolio-overlay"><span>View</span></div>`;
-      div.onclick=()=>openLightbox(item.src);
-    } else if(item.type==='pdf'){
-      if(item.cover){
-        div.innerHTML=`<img src="${item.cover}" alt="${item.label}"><div class="portfolio-overlay"><span>📄 Open PDF</span></div>`;
+  function makeItem(item) {
+    var div = document.createElement('div');
+    div.className = 'portfolio-item';
+    if (item.type === 'image') {
+      div.innerHTML = '<img src="'+item.src+'" alt="'+item.label+'"><div class="portfolio-overlay"><span>View</span></div>';
+      div.onclick = function(){ openLightbox(item.src); };
+    } else if (item.type === 'pdf') {
+      if (item.cover) {
+        div.innerHTML = '<img src="'+item.cover+'" alt="'+item.label+'"><div class="portfolio-overlay"><span>📄 Open PDF</span></div>';
       } else {
-        div.innerHTML=`<div class="portfolio-item-placeholder"><svg viewBox="0 0 36 36" fill="none"><rect x="4" y="2" width="28" height="32" rx="3" stroke="#f0c040" stroke-width="2"/><path d="M10 10h16M10 16h16M10 22h10" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/></svg><span style="font-weight:700;color:var(--gold);font-size:.78rem;">PDF</span><span style="font-size:.72rem;text-align:center;">${item.label}</span></div><div class="portfolio-overlay"><span>📄 Open PDF</span></div>`;
+        div.innerHTML = '<div class="portfolio-item-placeholder"><span style="font-weight:700;color:var(--gold);">PDF</span><span>'+item.label+'</span></div><div class="portfolio-overlay"><span>📄 Open PDF</span></div>';
       }
-      div.onclick=()=>window.open(item.src,'_blank');
-    } else if(item.type==='video'){
-      div.innerHTML=`<video src="${item.src}" style="width:100%;height:100%;object-fit:cover;" muted></video><div class="portfolio-overlay"><span>▶ Play</span></div>`;
+      div.onclick = function(){ window.open(item.src,'_blank'); };
+    } else if (item.type === 'video') {
+      div.innerHTML = '<video src="'+item.src+'" style="width:100%;height:100%;object-fit:cover;" muted></video><div class="portfolio-overlay"><span>▶ Play</span></div>';
     } else {
-      div.innerHTML=`<div class="portfolio-item-placeholder"><svg viewBox="0 0 36 36" fill="none"><rect x="3" y="5" width="30" height="26" rx="3" stroke="#8892a4" stroke-width="2"/><path d="M3 13h30" stroke="#8892a4" stroke-width="2"/></svg><span style="font-weight:700;color:var(--gold);font-size:.78rem;">${CATS[item.cat]||item.cat}</span><span style="font-size:.72rem;text-align:center;">${item.label}</span></div>`;
+      div.innerHTML = '<div class="portfolio-item-placeholder"><span style="font-weight:700;color:var(--gold);font-size:.78rem;">'+(CATS[item.cat]||item.cat)+'</span><span style="font-size:.72rem;text-align:center;">'+item.label+'</span></div>';
     }
     return div;
   }
 
-  function renderPortfolio(){
-    const grid=document.getElementById('portfolio-grid');
-    grid.innerHTML='';
-    if(activeTab==='all'){
-      grid.style.gridTemplateColumns='repeat(4,1fr)';
-      COL_ORDER.forEach(cat=>{
-        const col=document.createElement('div');
-        col.className='portfolio-col';
-        portfolioItems.filter(i=>i.cat===cat).forEach(item=>col.appendChild(makeItem(item)));
-        if(editMode){
-          const a=document.createElement('div');
-          a.className='portfolio-item';
-          a.style.cssText='border:2px dashed rgba(240,192,64,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;aspect-ratio:1/1;';
-          a.innerHTML='<div style="text-align:center;color:var(--gold);"><div style="font-size:1.5rem;">＋</div><div style="font-weight:700;font-size:.75rem;">Add</div></div>';
-          a.onclick=()=>{activeTab=cat;document.getElementById('portfolio-upload').click();};
+  function renderPortfolio() {
+    var grid = document.getElementById('portfolio-grid');
+    grid.innerHTML = '';
+    if (activeTab === 'all') {
+      grid.style.gridTemplateColumns = 'repeat(4,1fr)';
+      COL_ORDER.forEach(function(cat) {
+        var col = document.createElement('div');
+        col.className = 'portfolio-col';
+        portfolioItems.filter(function(i){ return i.cat === cat; }).forEach(function(item){ col.appendChild(makeItem(item)); });
+        if (editMode) {
+          var a = document.createElement('div');
+          a.className = 'portfolio-item';
+          a.style.cssText = 'border:2px dashed rgba(240,192,64,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;aspect-ratio:1/1;';
+          a.innerHTML = '<div style="text-align:center;color:var(--gold);"><div style="font-size:1.5rem;">＋</div><div style="font-weight:700;font-size:.75rem;">Add</div></div>';
+          a.onclick = function(){ activeTab = cat; document.getElementById('portfolio-upload').click(); };
           col.appendChild(a);
         }
         grid.appendChild(col);
       });
     } else {
-      grid.style.gridTemplateColumns='repeat(3,1fr)';
-      portfolioItems.filter(i=>i.cat===activeTab).forEach(item=>grid.appendChild(makeItem(item)));
-      if(editMode){
-        const a=document.createElement('div');
-        a.className='portfolio-item';
-        a.style.cssText='border:2px dashed rgba(240,192,64,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;';
-        a.innerHTML='<div style="text-align:center;color:var(--gold);"><div style="font-size:2rem;">＋</div><div style="font-weight:700;font-size:.85rem;">Add Work Sample</div></div>';
-        a.onclick=()=>document.getElementById('portfolio-upload').click();
+      grid.style.gridTemplateColumns = 'repeat(3,1fr)';
+      portfolioItems.filter(function(i){ return i.cat === activeTab; }).forEach(function(item){ grid.appendChild(makeItem(item)); });
+      if (editMode) {
+        var a = document.createElement('div');
+        a.className = 'portfolio-item';
+        a.style.cssText = 'border:2px dashed rgba(240,192,64,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;';
+        a.innerHTML = '<div style="text-align:center;color:var(--gold);"><div style="font-size:2rem;">＋</div><div style="font-weight:700;font-size:.85rem;">Add Work Sample</div></div>';
+        a.onclick = function(){ document.getElementById('portfolio-upload').click(); };
         grid.appendChild(a);
       }
     }
   }
 
-  document.getElementById('portfolio-tabs').addEventListener('click',e=>{
-    const tab=e.target.closest('.tab');
-    if(!tab)return;
-    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('portfolio-tabs').addEventListener('click', function(e) {
+    var tab = e.target.closest('.tab');
+    if (!tab) return;
+    document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
     tab.classList.add('active');
-    activeTab=tab.dataset.tab;
+    activeTab = tab.dataset.tab;
     renderPortfolio();
   });
 
-  function handlePortfolioUpload(event){
-    const files=Array.from(event.target.files);
-    const cats=['marketing','automation','graphics','plan'];
-    const cat=activeTab==='all'?'graphics':(cats.includes(activeTab)?activeTab:'graphics');
-    files.forEach(file=>{
-      const url=URL.createObjectURL(file);
-      const isPDF=file.type==='application/pdf';
-      const isVideo=file.type.startsWith('video/');
-      portfolioItems.push({id:Date.now()+Math.random(),cat,type:isPDF?'pdf':isVideo?'video':'image',src:url,label:file.name});
+  window.handlePortfolioUpload = function(event) {
+    var files = Array.from(event.target.files);
+    var cats = ['marketing','automation','graphics','plan'];
+    var cat = activeTab === 'all' ? 'graphics' : (cats.includes(activeTab) ? activeTab : 'graphics');
+    files.forEach(function(file) {
+      var url = URL.createObjectURL(file);
+      var isPDF = file.type === 'application/pdf';
+      var isVideo = file.type.startsWith('video/');
+      portfolioItems.push({id:Date.now()+Math.random(),cat:cat,type:isPDF?'pdf':isVideo?'video':'image',src:url,label:file.name});
     });
     renderPortfolio();
-    event.target.value='';
-  }
+    event.target.value = '';
+  };
 
-  const secs=document.querySelectorAll('section');
-  const navAs=document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll',()=>{
-    let cur='';
-    secs.forEach(s=>{if(scrollY>=s.offsetTop-120)cur=s.id;});
-    navAs.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--gold)':'';});
+  // ---- NAV HIGHLIGHT ----
+  var secs = document.querySelectorAll('section');
+  var navAs = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', function() {
+    var cur = '';
+    secs.forEach(function(s){ if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+    navAs.forEach(function(a){ a.style.color = a.getAttribute('href') === '#'+cur ? 'var(--gold)' : ''; });
   });
 
   renderPortfolio();
+
+}); // end DOMContentLoaded
 </script>
 </body>
 </html>
