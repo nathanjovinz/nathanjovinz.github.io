@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Case Study — Real Estate Investor AI Automation | Nathan Jovinz</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+  :root{--black:#0a0a0a;--white:#fafaf8;--gray-100:#f2f2f0;--gray-300:#d4d4cf;--gray-500:#8a8a84;--gray-700:#3d3d38;--accent:#1a3a6b;--accent-light:#e8eef5;--accent-mid:#2d5fa0;--red:#c0392b;--yellow:#f4c842;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--white);color:var(--black);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-300);padding:0 2rem;height:56px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-logo{font-family:'Instrument Serif',serif;font-size:1.1rem;color:var(--black);text-decoration:none;}
+  .nav-back{color:var(--gray-500);font-size:.85rem;text-decoration:none;display:flex;align-items:center;gap:.4rem;transition:.2s;}
+  .nav-back:hover{color:var(--black);}
+  .nav-cta{background:var(--accent);color:var(--white);padding:.4rem 1.1rem;border-radius:4px;font-size:.8rem;font-weight:500;text-decoration:none;letter-spacing:.02em;transition:background .2s;border:none;cursor:pointer;}
+  .nav-cta:hover{background:var(--accent-mid);}
+  .hero{margin-top:56px;padding:5rem 2rem 4rem;max-width:860px;margin-left:auto;margin-right:auto;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;}
+  .eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--accent);}
+  .hero h1{font-family:'Instrument Serif',serif;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.15;color:var(--black);margin-bottom:1.5rem;max-width:720px;}
+  .hero h1 em{font-style:italic;color:var(--accent-mid);}
+  .hero-sub{font-size:1.05rem;color:var(--gray-700);max-width:600px;line-height:1.7;margin-bottom:2.5rem;}
+  .label-tag{display:inline-block;background:var(--yellow);color:var(--black);font-family:'JetBrains Mono',monospace;font-size:.65rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .6rem;border-radius:2px;margin-bottom:1rem;}
+  .metrics{background:var(--black);color:var(--white);padding:3rem 2rem;}
+  .metrics-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+  .metric-item{border-left:2px solid var(--accent-mid);padding-left:1.2rem;}
+  .metric-number{font-family:'Instrument Serif',serif;font-size:2.8rem;line-height:1;color:var(--white);margin-bottom:.3rem;}
+  .metric-number span{color:var(--accent-mid);}
+  .metric-label{font-size:.8rem;color:var(--gray-300);line-height:1.4;font-weight:300;}
+  .section{padding:4rem 2rem;max-width:860px;margin:0 auto;}
+  .section+.section{border-top:1px solid var(--gray-300);}
+  .section-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-500);margin-bottom:1rem;}
+  .section h2{font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.2;margin-bottom:1.2rem;color:var(--black);}
+  .section p{color:var(--gray-700);font-size:.97rem;line-height:1.8;max-width:640px;margin-bottom:1rem;}
+  .problem-box{background:#fff5f5;border-left:3px solid var(--red);padding:1.5rem 1.8rem;border-radius:0 6px 6px 0;margin:2rem 0;}
+  .problem-box p{color:var(--black);font-size:.95rem;margin:0;}
+  .problem-box strong{display:block;font-size:.7rem;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:.5rem;}
+  .process-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem;}
+  .process-card{background:var(--gray-100);border-radius:8px;padding:1.5rem;}
+  .process-card-num{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gray-500);letter-spacing:.08em;margin-bottom:.6rem;}
+  .process-card h3{font-size:.95rem;font-weight:600;margin-bottom:.5rem;color:var(--black);}
+  .process-card p{font-size:.85rem;color:var(--gray-700);line-height:1.6;margin:0;}
+  .process-card.highlight{background:var(--accent-light);border:1px solid #b8c8de;}
+  .flow{margin:2.5rem 0;display:flex;flex-direction:column;gap:0;}
+  .flow-step{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;position:relative;}
+  .flow-step:not(:last-child)::after{content:'';position:absolute;left:15px;top:44px;width:1px;height:calc(100% - 12px);background:var(--gray-300);}
+  .flow-dot{width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.65rem;font-weight:500;flex-shrink:0;margin-top:2px;}
+  .flow-content h4{font-size:.93rem;font-weight:600;margin-bottom:.2rem;color:var(--black);}
+  .flow-content p{font-size:.84rem;color:var(--gray-700);margin:0;line-height:1.6;}
+  .results-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;}
+  .result-card{border:1px solid var(--gray-300);border-radius:8px;padding:1.4rem;}
+  .result-card .before{font-size:.78rem;font-family:'JetBrains Mono',monospace;color:var(--red);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.3rem;}
+  .result-card .after{font-size:.78rem;font-family:'JetBrains Mono',monospace;color:var(--accent-mid);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.3rem;}
+  .result-card p{font-size:.88rem;color:var(--black);margin:0;font-weight:500;}
+  .result-divider{border:none;border-top:1px dashed var(--gray-300);margin:.6rem 0;}
+  .tools-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem;}
+  .tool-chip{background:var(--gray-100);border:1px solid var(--gray-300);border-radius:4px;padding:.35rem .8rem;font-size:.78rem;font-family:'JetBrains Mono',monospace;color:var(--gray-700);font-weight:500;}
+  .disclaimer{background:var(--gray-100);border-radius:6px;padding:1rem 1.4rem;margin-top:1.5rem;font-size:.8rem;color:var(--gray-500);line-height:1.6;font-style:italic;}
+  .cta-section{background:var(--black);color:var(--white);padding:5rem 2rem;text-align:center;}
+  .cta-section h2{font-family:'Instrument Serif',serif;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:1rem;line-height:1.2;}
+  .cta-section h2 em{font-style:italic;color:var(--accent-mid);}
+  .cta-section p{color:var(--gray-300);font-size:.95rem;max-width:480px;margin:0 auto 2rem;line-height:1.7;}
+  .cta-btn{display:inline-block;background:var(--accent);color:var(--white);padding:.85rem 2rem;border-radius:4px;font-size:.9rem;font-weight:500;text-decoration:none;letter-spacing:.02em;transition:background .2s,transform .15s;border:none;cursor:pointer;}
+  .cta-btn:hover{background:var(--accent-mid);transform:translateY(-1px);}
+  .cta-note{margin-top:1rem;font-size:.78rem;color:var(--gray-500);}
+  footer{padding:1.5rem 2rem;border-top:1px solid var(--gray-300);text-align:center;font-size:.78rem;color:var(--gray-500);}
+  .cal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+  .cal-overlay.open{display:flex;}
+  .cal-box{background:#fff;border-radius:12px;width:min(820px,95vw);height:min(700px,92vh);display:flex;flex-direction:column;overflow:hidden;}
+  .cal-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid var(--gray-300);}
+  .cal-header span{font-weight:700;color:var(--black);font-size:.95rem;}
+  .cal-close{background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--gray-500);line-height:1;}
+  .cal-iframe{flex:1;width:100%;border:none;}
+  @media(max-width:640px){.metrics-inner{grid-template-columns:1fr;gap:1.5rem;}.process-grid{grid-template-columns:1fr;}.results-grid{grid-template-columns:1fr;}.hero{padding:3rem 1.2rem 2.5rem;}.section{padding:3rem 1.2rem;}nav{padding:0 1.2rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Nathan Jovinz</a>
+  <a class="nav-back" href="index.html">← Back to Portfolio</a>
+  <button class="nav-cta" onclick="openCal()">Book a Free Call</button>
+</nav>
+<section class="hero">
+  <div class="label-tag">Concept Case Study</div>
+  <div class="eyebrow">AI Automation · Real Estate Investment</div>
+  <h1>How a real estate investor could build a <em>deal flow machine</em> without hiring a team</h1>
+  <p class="hero-sub">A breakdown of the AI-powered outreach, pipeline, and follow-up system I would build for a solo or small-team real estate investor — and what it does to deal flow, response time, and conversion.</p>
+</section>
+<div class="metrics">
+  <div class="metrics-inner">
+    <div class="metric-item"><div class="metric-number">70<span>%</span></div><div class="metric-label">Of deals go to the investor who responds first — not the one with the best offer</div></div>
+    <div class="metric-item"><div class="metric-number">5<span>hrs</span></div><div class="metric-label">Average hours per week solo investors spend on manual outreach and follow-up</div></div>
+    <div class="metric-item"><div class="metric-number">3<span>x</span></div><div class="metric-label">More deals in the pipeline when outreach runs on an automated, consistent schedule</div></div>
+  </div>
+</div>
+<section class="section">
+  <div class="section-label">The Problem</div>
+  <h2>The investor was good at closing. Terrible at staying consistent.</h2>
+  <p>A solo real estate investor with a solid track record — but deal flow was feast or famine. When actively prospecting, opportunities came in. The moment they got busy closing a deal, outreach stopped, the pipeline dried up, and they'd be starting from zero again in 60 days.</p>
+  <p>Follow-up was the biggest leak. Leads would show interest, go quiet, and by the time the investor circled back — sometimes weeks later — they'd already moved on. There was no system keeping those conversations alive.</p>
+  <div class="problem-box"><strong>The Core Gap</strong><p>The investor's revenue was directly tied to how much manual effort they put in that week. A great system means deals move whether you're actively working them or not. Without it, every vacation, busy period, or closed deal costs you future pipeline.</p></div>
+  <p>There was also no visibility into what was working. Outreach happened through a mix of text messages, emails, and calls — nothing tracked, nothing measured, no way to know which leads were warm and which were dead.</p>
+</section>
+<section class="section">
+  <div class="section-label">The Solution</div>
+  <h2>An automated deal flow pipeline that works while you close</h2>
+  <div class="flow">
+    <div class="flow-step"><div class="flow-dot">01</div><div class="flow-content"><h4>Automated Outreach Sequences</h4><p>Targeted outreach goes out on a consistent schedule — to motivated sellers, property owners, or off-market leads — without the investor manually sending a single message.</p></div></div>
+    <div class="flow-step"><div class="flow-dot">02</div><div class="flow-content"><h4>Lead Response & Qualification Bot</h4><p>When a lead responds, an AI-powered system handles the first conversation — qualifying intent, gathering property details, and scheduling a call — before the investor ever gets involved.</p></div></div>
+    <div class="flow-step"><div class="flow-dot">03</div><div class="flow-content"><h4>Multi-Touch Follow-Up System</h4><p>Leads that don't respond immediately enter a structured follow-up sequence — Day 3, Day 7, Day 14, Day 30. Each message is different in tone and angle. The sequence stops the moment a lead re-engages.</p></div></div>
+    <div class="flow-step"><div class="flow-dot">04</div><div class="flow-content"><h4>CRM Pipeline with Deal Stages</h4><p>Every lead is automatically logged, tagged by stage, and moved through the pipeline based on their actions. The investor sees exactly where every deal stands without manually updating anything.</p></div></div>
+    <div class="flow-step"><div class="flow-dot">05</div><div class="flow-content"><h4>Dead Lead Reactivation Campaign</h4><p>Leads that went cold 60–90 days ago get a reactivation sequence every quarter. Circumstances change — a seller who wasn't ready 3 months ago might be motivated today.</p></div></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-label">How It Gets Built</div>
+  <h2>Fully operational in one week</h2>
+  <div class="process-grid">
+    <div class="process-card"><div class="process-card-num">Day 1–2</div><h3>Audit & Strategy</h3><p>Review current outreach channels, lead sources, follow-up gaps, and CRM setup. Define the ideal lead profile and deal criteria to target.</p></div>
+    <div class="process-card"><div class="process-card-num">Day 3–4</div><h3>Build the System</h3><p>Set up outreach sequences, qualification bot, CRM pipeline stages, and follow-up automations. Write all message copy tailored to the investor's market and voice.</p></div>
+    <div class="process-card highlight"><div class="process-card-num">Day 5</div><h3>Test Everything</h3><p>Run every sequence end-to-end. Confirm triggers, responses, and CRM logging all fire correctly before going live.</p></div>
+    <div class="process-card highlight"><div class="process-card-num">Day 6–7</div><h3>Launch & Monitor</h3><p>System goes live. I monitor the first week of activity, fix any issues, and hand over a simple dashboard the investor checks weekly.</p></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-label">The Impact</div>
+  <h2>What changes — and what it's worth</h2>
+  <div class="results-grid">
+    <div class="result-card"><div class="before">Before</div><p>Outreach stops when the investor gets busy. Pipeline dries up.</p><hr class="result-divider"/><div class="after">After</div><p>Outreach runs on a fixed schedule regardless of how busy the investor is.</p></div>
+    <div class="result-card"><div class="before">Before</div><p>Warm leads go cold because follow-up is inconsistent or forgotten.</p><hr class="result-divider"/><div class="after">After</div><p>Every lead gets touched at least 5 times automatically before being marked inactive.</p></div>
+    <div class="result-card"><div class="before">Before</div><p>No visibility into pipeline. Deals tracked in spreadsheets or memory.</p><hr class="result-divider"/><div class="after">After</div><p>Live CRM dashboard shows every deal, every stage, every next action — automatically updated.</p></div>
+    <div class="result-card"><div class="before">Before</div><p>Old leads abandoned. New leads the only growth strategy.</p><hr class="result-divider"/><div class="after">After</div><p>Quarterly reactivation campaigns recover deals from an existing lead list at zero acquisition cost.</p></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-label">Tools Used</div>
+  <h2>Built without a developer. Runs without a team.</h2>
+  <p>Every component of this system is built using no-code automation tools — fast setup, low overhead, and no technical dependency once it's running.</p>
+  <div class="tools-row">
+    <span class="tool-chip">Make.com</span><span class="tool-chip">GoHighLevel</span><span class="tool-chip">OpenAI API</span><span class="tool-chip">Twilio (SMS)</span><span class="tool-chip">Instantly.ai</span><span class="tool-chip">Airtable</span><span class="tool-chip">Calendly</span><span class="tool-chip">Zapier</span>
+  </div>
+  <div class="disclaimer">This is a concept case study built to demonstrate the system that I would implement for a real estate investor. Numbers referenced are based on published industry research. Results will vary by market, lead source, and deal volume.</div>
+</section>
+<div class="cta-section">
+  <h2>Is your deal flow dependent on <em>how hard you worked this week?</em></h2>
+  <p>Book a free 15-minute call. I'll look at your current outreach setup and tell you exactly what I'd automate first — no pitch, no pressure.</p>
+  <button class="cta-btn" onclick="openCal()">Book Your Free Call →</button>
+  <div class="cta-note">15 minutes. No commitment. Just clarity.</div>
+</div>
+<footer>© 2025 Nathan Jovinz · AI Automation & Digital Marketing</footer>
+<div class="cal-overlay" id="cal-overlay">
+  <div class="cal-box">
+    <div class="cal-header"><span>📅 Book a Free Call — Nathan Jovinz</span><button class="cal-close" onclick="closeCal()">✕</button></div>
+    <iframe class="cal-iframe" id="cal-iframe" src="" title="Book a meeting"></iframe>
+  </div>
+</div>
+<script>
+  function openCal(){document.getElementById('cal-iframe').src='https://calendly.com/nate-youraiautomator/30min';document.getElementById('cal-overlay').classList.add('open');document.body.style.overflow='hidden';}
+  function closeCal(){document.getElementById('cal-overlay').classList.remove('open');document.getElementById('cal-iframe').src='';document.body.style.overflow='';}
+  document.getElementById('cal-overlay').addEventListener('click',function(e){if(e.target===this)closeCal();});
+</script>
+</body>
+</html>

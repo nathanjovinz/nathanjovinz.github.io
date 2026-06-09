@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nathan Jovinz | AI-Powered Sales Growth</title>
+<style>
+  :root{--navy:#0a1628;--navy2:#112240;--navy3:#1a3a6b;--green:#00b87a;--green2:#00d68f;--gold:#f0c040;--gold2:#ffd700;--white:#f8f9ff;--gray:#8892a4;--edit-bg:rgba(240,192,64,0.13);--edit-border:2px dashed var(--gold);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
+  ::-webkit-scrollbar{width:6px;}
+  ::-webkit-scrollbar-track{background:var(--navy);}
+  ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
+  nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(10,22,40,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(240,192,64,0.15);padding:0 5%;}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .nav-logo{font-size:1.25rem;font-weight:800;letter-spacing:1px;}
+  .nav-logo span{color:var(--gold);}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{color:var(--gray);text-decoration:none;font-size:.9rem;font-weight:600;letter-spacing:.5px;transition:.2s;text-transform:uppercase;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-cta{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;padding:.5rem 1.25rem;border-radius:6px;font-weight:700;font-size:.85rem;text-decoration:none;transition:.2s;letter-spacing:.5px;cursor:pointer;}
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,184,122,.4);}
+  section{padding:100px 5%;min-height:100vh;display:flex;flex-direction:column;justify-content:center;}
+  .section-label{font-size:.8rem;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;}
+  h1{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:1.1;}
+  h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.15;}
+  .accent{color:var(--gold);}
+  .green-accent{color:var(--green2);}
+  #home{background:radial-gradient(ellipse at 70% 50%,rgba(0,184,122,.07) 0%,transparent 60%),var(--navy);flex-direction:row;align-items:center;gap:5%;padding-top:130px;}
+  .hero-text{flex:1;}
+  .hero-text h1{margin-bottom:1.5rem;}
+  .hero-sub{font-size:1.15rem;color:var(--gray);line-height:1.7;max-width:560px;margin-bottom:2rem;}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);padding:.85rem 2rem;border-radius:8px;font-weight:800;font-size:1rem;text-decoration:none;transition:.2s;display:inline-block;cursor:pointer;border:none;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(240,192,64,.35);}
+  .btn-secondary{border:2px solid var(--green);color:var(--green2);padding:.85rem 2rem;border-radius:8px;font-weight:700;font-size:1rem;text-decoration:none;transition:.2s;display:inline-block;}
+  .btn-secondary:hover{background:var(--green);color:#fff;transform:translateY(-2px);}
+  .hero-photo{flex:0 0 420px;position:relative;}
+  .hero-photo-wrap{width:420px;height:520px;border-radius:16px;overflow:hidden;border:3px solid var(--gold);position:relative;background:var(--navy2);}
+  .hero-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+  .hero-glow{position:absolute;top:-30px;right:-30px;width:200px;height:200px;background:radial-gradient(circle,rgba(240,192,64,.15),transparent 70%);pointer-events:none;}
+  .stats-row{display:flex;gap:2.5rem;margin-top:2.5rem;}
+  .stat-num{font-size:2rem;font-weight:900;color:var(--gold);}
+  .stat-label{font-size:.8rem;color:var(--gray);font-weight:600;letter-spacing:.5px;}
+  #about{background:var(--navy2);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem;}
+  .about-img{border-radius:12px;overflow:hidden;border:2px solid rgba(240,192,64,.2);background:var(--navy);height:400px;position:relative;}
+  .about-img img{width:100%;height:100%;object-fit:cover;display:block;}
+  .about-text p{color:var(--gray);line-height:1.8;font-size:1.05rem;margin-bottom:1.25rem;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem;}
+  .tag{background:rgba(0,184,122,.12);border:1px solid rgba(0,184,122,.3);color:var(--green2);padding:.35rem .9rem;border-radius:20px;font-size:.8rem;font-weight:700;letter-spacing:.5px;}
+  #services{background:var(--navy);}
+  .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem;}
+  .service-card{background:var(--navy2);border:1px solid rgba(240,192,64,.1);border-radius:12px;padding:2rem;transition:.3s;position:relative;overflow:hidden;}
+  .service-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--gold),var(--green));}
+  .service-card:hover{transform:translateY(-4px);border-color:rgba(240,192,64,.3);box-shadow:0 20px 40px rgba(0,0,0,.3);}
+  .service-icon{font-size:2rem;margin-bottom:1rem;}
+  .service-card h3{font-size:1.2rem;font-weight:800;margin-bottom:.75rem;color:var(--white);}
+  .service-card p{color:var(--gray);line-height:1.7;font-size:.95rem;}
+  #results{background:linear-gradient(135deg,var(--navy2) 0%,rgba(17,34,64,.8) 100%);}
+  .results-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem;}
+  .results-list{list-style:none;}
+  .results-list li{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:1.05rem;font-weight:600;}
+  .results-list li:last-child{border-bottom:none;}
+  .check{width:28px;height:28px;background:linear-gradient(135deg,var(--green),var(--green2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;}
+  .who-box{background:var(--navy);border:1px solid rgba(240,192,64,.15);border-radius:12px;padding:2rem;}
+  .who-box h3{font-size:1.3rem;font-weight:800;color:var(--gold);margin-bottom:1.5rem;}
+  .who-list{list-style:none;}
+  .who-list li{padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.06);color:var(--gray);font-weight:600;display:flex;align-items:center;gap:.75rem;}
+  .who-list li::before{content:'▸';color:var(--green2);}
+  #process{background:var(--navy);}
+  .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;position:relative;}
+  .process-steps::before{content:'';position:absolute;top:38px;left:10%;width:80%;height:2px;background:linear-gradient(90deg,var(--green),var(--gold));z-index:0;}
+  .step{text-align:center;position:relative;z-index:1;}
+  .step-num{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:var(--navy);margin:0 auto 1.25rem;box-shadow:0 8px 25px rgba(0,184,122,.3);}
+  .step h3{font-size:1rem;font-weight:800;margin-bottom:.5rem;}
+  .step p{color:var(--gray);font-size:.88rem;line-height:1.6;}
+  #portfolio{background:var(--navy2);}
+  .portfolio-tabs{display:flex;flex-direction:column;gap:.75rem;margin:2rem 0;}
+  .tab-row-all{display:flex;}
+  .tab-row-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;}
+  .tab{padding:.75rem 1rem;border-radius:6px;border:1px solid rgba(255,255,255,.15);color:var(--gray);cursor:pointer;font-weight:600;font-size:.85rem;transition:.2s;background:transparent;text-align:center;}
+  .tab.active,.tab:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+  .portfolio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;}
+  .portfolio-col{display:flex;flex-direction:column;gap:1.25rem;}
+  .portfolio-item{border-radius:10px;overflow:hidden;background:var(--navy);border:1px solid rgba(255,255,255,.08);aspect-ratio:1/1;position:relative;cursor:pointer;transition:.3s;}
+  .portfolio-item:hover{transform:scale(1.02);border-color:var(--gold);}
+  .portfolio-item img{width:100%;height:100%;object-fit:cover;display:block;}
+  .portfolio-item-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--gray);font-size:.85rem;}
+  .portfolio-overlay{position:absolute;inset:0;background:rgba(10,22,40,.85);opacity:0;transition:.3s;display:flex;align-items:center;justify-content:center;}
+  .portfolio-item:hover .portfolio-overlay{opacity:1;}
+  .portfolio-overlay span{color:var(--gold);font-weight:700;font-size:.95rem;}
+  .upload-area{border:2px dashed rgba(240,192,64,.3);border-radius:10px;padding:2rem;text-align:center;color:var(--gray);margin-top:1.5rem;cursor:pointer;transition:.2s;display:none;}
+  .upload-area:hover{border-color:var(--gold);color:var(--gold);}
+  .upload-area input{display:none;}
+  #contact{background:radial-gradient(ellipse at 30% 50%,rgba(0,184,122,.08),transparent 60%),var(--navy);}
+  .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
+  .contact-info p{color:var(--gray);line-height:1.8;font-size:1.05rem;margin-bottom:2rem;}
+  .contact-highlights{list-style:none;}
+  .contact-highlights li{display:flex;align-items:center;gap:.75rem;padding:.6rem 0;color:var(--white);font-weight:600;}
+  .contact-highlights li span.dot{width:10px;height:10px;border-radius:50%;background:var(--green2);flex-shrink:0;}
+  .contact-form{background:var(--navy2);border:1px solid rgba(240,192,64,.1);border-radius:12px;padding:2rem;}
+  .form-group{margin-bottom:1.25rem;}
+  .form-group label{display:block;font-size:.85rem;font-weight:700;color:var(--gold);margin-bottom:.5rem;letter-spacing:.5px;}
+  .form-group input,.form-group textarea,.form-group select{width:100%;background:var(--navy);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.75rem 1rem;color:var(--white);font-size:.95rem;font-family:inherit;transition:.2s;}
+  .form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--gold);}
+  .form-group textarea{height:120px;resize:vertical;}
+  .form-group select option{background:var(--navy2);}
+  .submit-btn{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);padding:1rem;border-radius:8px;font-weight:800;font-size:1rem;border:none;cursor:pointer;transition:.2s;}
+  .submit-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(240,192,64,.3);}
+  .cal-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:20000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+  .cal-modal-overlay.open{display:flex;}
+  .cal-modal{background:var(--navy2);border:1px solid var(--gold);border-radius:16px;width:min(820px,95vw);height:min(700px,92vh);display:flex;flex-direction:column;overflow:hidden;}
+  .cal-modal-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid rgba(240,192,64,.15);}
+  .cal-modal-header span{font-weight:800;color:var(--gold);font-size:1rem;}
+  .cal-modal-close{background:none;border:none;color:var(--gray);font-size:1.5rem;cursor:pointer;line-height:1;}
+  .cal-modal-close:hover{color:var(--gold);}
+  .cal-iframe{flex:1;width:100%;border:none;}
+  footer{background:var(--navy2);border-top:1px solid rgba(240,192,64,.1);padding:2.5rem 5%;text-align:center;color:var(--gray);font-size:.9rem;}
+  footer span{color:var(--gold);}
+  .edit-bar{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:.75rem;}
+  .lock-btn{background:var(--gold);color:var(--navy);border:none;border-radius:50px;padding:.7rem 1.5rem;font-weight:800;font-size:.9rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;box-shadow:0 6px 20px rgba(240,192,64,.4);transition:.2s;}
+  .lock-btn:hover{transform:translateY(-2px);}
+  .edit-mode-badge{background:var(--green);color:#fff;padding:.4rem 1rem;border-radius:20px;font-size:.8rem;font-weight:700;display:none;}
+  .edit-mode [contenteditable]:hover{background:var(--edit-bg);border:var(--edit-border);}
+  .edit-mode [contenteditable]:focus{background:var(--edit-bg);border:var(--edit-border);}
+  .edit-mode .upload-area{display:block;}
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:10000;align-items:center;justify-content:center;backdrop-filter:blur(6px);display:none;}
+  .modal{background:var(--navy2);border:1px solid var(--gold);border-radius:16px;padding:2.5rem;width:360px;text-align:center;}
+  .modal h3{font-size:1.4rem;font-weight:800;margin-bottom:.5rem;}
+  .modal p{color:var(--gray);font-size:.9rem;margin-bottom:1.5rem;}
+  .modal input{width:100%;background:var(--navy);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.75rem 1rem;color:var(--white);font-size:1rem;text-align:center;letter-spacing:4px;margin-bottom:1rem;}
+  .modal input:focus{outline:none;border-color:var(--gold);}
+  .modal-btns{display:flex;gap:.75rem;}
+  .modal-btn{flex:1;padding:.75rem;border-radius:8px;font-weight:700;cursor:pointer;font-size:.95rem;border:none;}
+  .modal-btn.confirm{background:var(--gold);color:var(--navy);}
+  .modal-btn.cancel{background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--gray);}
+  .modal-error{color:#ff6b6b;font-size:.85rem;margin-top:.5rem;display:none;}
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:10000;display:none;align-items:center;justify-content:center;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:90vw;max-height:88vh;border-radius:8px;border:2px solid var(--gold);}
+  .lightbox-close{position:absolute;top:20px;right:28px;color:var(--gold);font-size:2rem;cursor:pointer;font-weight:900;}
+  @media(max-width:900px){
+    #home{flex-direction:column-reverse;text-align:center;}
+    .hero-photo{flex:none;}
+    .stats-row{justify-content:center;}
+    .about-grid,.results-inner,.contact-inner{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr;}
+    .process-steps{grid-template-columns:1fr 1fr;}
+    .process-steps::before{display:none;}
+    .portfolio-grid{grid-template-columns:1fr 1fr;}
+    .tab-row-cats{grid-template-columns:repeat(2,1fr);}
+    .nav-links{display:none;}
+  }
+  @media(max-width:560px){
+    .portfolio-grid{grid-template-columns:1fr;}
+    .hero-btns{justify-content:center;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Nathan<span>Jovinz</span></div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#casestudies">Case Studies</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-cta" onclick="openCalModal()">Book a Call</button>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="hero-text">
+    <div class="section-label">AI-Powered Sales Growth, Marketing & Automation</div>
+    <h1>Turn More Leads<br>Into <span class="accent">Closed Deals</span></h1>
+    <p class="hero-sub" contenteditable="false">Whether you're a real estate professional, a small business owner, or an individual looking to leverage AI — I build smart systems that <strong>save time, convert leads, and grow your business</strong> through marketing, automation, and AI-powered workflows.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="openCalModal()">📅 Book a Free Growth Assessment</button>
+      <a href="#services" class="btn-secondary">See What I Do</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num" contenteditable="false">3x</div><div class="stat-label">Lead Conversion Boost</div></div>
+      <div class="stat"><div class="stat-num" contenteditable="false">50%</div><div class="stat-label">Faster Response Times</div></div>
+      <div class="stat"><div class="stat-num" contenteditable="false">100%</div><div class="stat-label">Results-Focused</div></div>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <div class="hero-glow"></div>
+    <div class="hero-photo-wrap">
+      <img src="https://nathanjovinz.github.io/images/IMG_3432.jpeg" alt="Nathan Jovinz">
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <div class="about-grid">
+    <div class="about-img">
+      <img src="https://nathanjovinz.github.io/images/aboutme.png" alt="Nathan Jovinz">
+    </div>
+    <div class="about-text">
+      <h2>I'm <span class="accent">Nathan Jovinz</span></h2><br>
+      <p contenteditable="false">I combine experience in digital marketing and AI-powered systems to help real estate professionals, small business owners, and individuals operate more efficiently — so they can focus on what matters most: <strong style="color:var(--green2)">growing their business and serving their clients.</strong></p>
+      <p contenteditable="false">My approach is built around business outcomes, not vanity metrics. Every system I build, every campaign I manage, and every automation I create is designed with one goal — to generate real, measurable growth for you and your business.</p>
+      <p contenteditable="false">I've worked with agents, brokers, investors, small business owners, and individuals to transform their sales processes, automate repetitive tasks, and create predictable pipelines that convert.</p>
+      <div class="tag-row">
+        <span class="tag">AI Systems Builder</span>
+        <span class="tag">Digital Marketing</span>
+        <span class="tag">Sales Automation</span>
+        <span class="tag">CRM Optimization</span>
+        <span class="tag">Real Estate</span>
+        <span class="tag">Small Business Growth</span>
+        <span class="tag">Lead Conversion</span>
+        <span class="tag">Workflow Design</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What I Help With</div>
+  <h2>Services Built to <span class="accent">Convert & Automate</span></h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <h3 contenteditable="false">Lead Conversion Systems</h3>
+      <p contenteditable="false">Transform incoming leads into booked appointments and qualified opportunities through structured follow-up processes — whether you're in real estate, retail, services, or any client-driven business.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📣</div>
+      <h3 contenteditable="false">Marketing Campaign Management</h3>
+      <p contenteditable="false">Plan and execute campaigns designed to attract, engage, and convert your ideal clients — from social media to email marketing, tailored to your industry and audience.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🤖</div>
+      <h3 contenteditable="false">AI-Powered Automation</h3>
+      <p contenteditable="false">Automate repetitive tasks, follow-ups, client communications, and workflows using AI tools — freeing up your time so you can focus on growth, whether you're a business owner or an individual.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3 contenteditable="false">CRM & Pipeline Optimization</h3>
+      <p contenteditable="false">Create organized workflows and systems that ensure every lead, client, or contact is tracked, followed up, and moved through your process — no more missed opportunities.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="section-label">The Results I Help Create</div>
+  <h2>What You Can <span class="green-accent">Expect</span></h2>
+  <div class="results-inner">
+    <ul class="results-list">
+      <li><span class="check">✓</span><span contenteditable="false">More appointments and opportunities booked</span></li>
+      <li><span class="check">✓</span><span contenteditable="false">Faster lead and client response times</span></li>
+      <li><span class="check">✓</span><span contenteditable="false">Automated workflows that save hours weekly</span></li>
+      <li><span class="check">✓</span><span contenteditable="false">Better conversion rates across your pipeline</span></li>
+      <li><span class="check">✓</span><span contenteditable="false">More efficient and organized business processes</span></li>
+      <li><span class="check">✓</span><span contenteditable="false">Increased opportunities to close and grow</span></li>
+    </ul>
+    <div class="who-box">
+      <h3>Who I Work With</h3>
+      <ul class="who-list">
+        <li contenteditable="false">Real Estate Agents & Brokers</li>
+        <li contenteditable="false">Real Estate Investors</li>
+        <li contenteditable="false">Small Business Owners</li>
+        <li contenteditable="false">Entrepreneurs & Startups</li>
+        <li contenteditable="false">Individuals Seeking AI Automation</li>
+        <li contenteditable="false">Property Management Companies</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label">My Process</div>
+  <h2>How We <span class="accent">Build Your System</span></h2>
+  <div class="process-steps">
+    <div class="step"><div class="step-num">1</div><h3 contenteditable="false">Discovery & Business Audit</h3><p contenteditable="false">Review your current marketing, lead flow, and sales process to understand exactly where you are today.</p></div>
+    <div class="step"><div class="step-num">2</div><h3 contenteditable="false">Strategy Development</h3><p contenteditable="false">Identify bottlenecks and opportunities, then map out a clear strategy for growth and conversion improvement.</p></div>
+    <div class="step"><div class="step-num">3</div><h3 contenteditable="false">System Implementation</h3><p contenteditable="false">Build and optimize marketing campaigns, automations, CRM workflows, and AI-powered tools tailored to your business.</p></div>
+    <div class="step"><div class="step-num">4</div><h3 contenteditable="false">Ongoing Optimization</h3><p contenteditable="false">Monitor performance metrics and continuously refine systems to ensure better results month over month.</p></div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-label">Portfolio & Work Samples</div>
+  <h2>Proof of <span class="accent">Work</span></h2>
+  <p style="color:var(--gray);font-size:.95rem;line-height:1.7;max-width:700px;margin-bottom:1.5rem;background:rgba(240,192,64,.06);border-left:3px solid var(--gold);padding:.75rem 1rem;border-radius:0 8px 8px 0;">
+    🔒 <strong style="color:var(--white);">Note:</strong> Due to strict NDA agreements with my clients, most of my work remains confidential. The samples below are mockups and non-sensitive examples created to demonstrate my capabilities — real client data and strategies are never shared.
+  </p>
+  <div class="portfolio-tabs" id="portfolio-tabs">
+    <div class="tab-row-all">
+      <div class="tab active" data-tab="all" style="width:100%;">All Work</div>
+    </div>
+    <div class="tab-row-cats">
+      <div class="tab" data-tab="marketing">Digital Marketing</div>
+      <div class="tab" data-tab="automation">AI Automations & Integration</div>
+      <div class="tab" data-tab="graphics">Graphics</div>
+      <div class="tab" data-tab="plan">30-60-90 Plans</div>
+    </div>
+  </div>
+  <div class="portfolio-grid" id="portfolio-grid"></div>
+  <div class="upload-area" id="upload-area" onclick="document.getElementById('portfolio-upload').click()">
+    <input type="file" id="portfolio-upload" accept="image/*,video/*,application/pdf" multiple onchange="handlePortfolioUpload(event)">
+    <div style="font-size:2rem;margin-bottom:.5rem;">📁</div>
+    <div style="font-weight:700;margin-bottom:.25rem;">Upload Work Samples</div>
+    <div style="font-size:.85rem;">Click to add images, videos or PDFs</div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="casestudies" style="background:var(--navy);padding:100px 5%;">
+  <div class="section-label">Case Studies</div>
+  <h2>Real Systems. <span class="accent">Real Results.</span></h2>
+  <p style="color:var(--gray);font-size:1rem;line-height:1.7;max-width:600px;margin:1rem 0 2.5rem;">A look at the AI-powered systems I build — broken down by industry, problem, solution, and measurable impact.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+
+    <div onclick="window.open('casestudy-dental.html','_blank')" style="background:var(--navy2);border:1px solid rgba(240,192,64,.1);border-radius:12px;padding:2rem;cursor:pointer;transition:.3s;position:relative;overflow:hidden;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(240,192,64,.35)';this.style.boxShadow='0 20px 40px rgba(0,0,0,.3)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(240,192,64,.1)';this.style.boxShadow=''">
+      <div style="width:48px;height:48px;background:rgba(0,184,122,.12);border:1px solid rgba(0,184,122,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.25rem;">🦷</div>
+      <div style="font-size:.7rem;font-weight:700;letter-spacing:2px;color:var(--green2);text-transform:uppercase;margin-bottom:.5rem;">AI Automation · Healthcare</div>
+      <h3 style="font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:.75rem;line-height:1.35;">How a dental clinic could stop losing patients to slow follow-up</h3>
+      <p style="color:var(--gray);font-size:.88rem;line-height:1.6;margin-bottom:1.5rem;">A full breakdown of the AI-powered inquiry, booking, and reminder system — and how it cuts no-shows by 60%.</p>
+      <div style="display:flex;align-items:center;gap:.5rem;color:var(--gold);font-weight:700;font-size:.85rem;">Read Case Study <span>→</span></div>
+      <div style="position:absolute;top:1rem;right:1rem;background:var(--gold);color:var(--navy);font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:3px;letter-spacing:1px;">CONCEPT</div>
+    </div>
+
+    <div onclick="window.open('casestudy-realestate.html','_blank')" style="background:var(--navy2);border:1px solid rgba(240,192,64,.1);border-radius:12px;padding:2rem;cursor:pointer;transition:.3s;position:relative;overflow:hidden;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(240,192,64,.35)';this.style.boxShadow='0 20px 40px rgba(0,0,0,.3)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(240,192,64,.1)';this.style.boxShadow=''">
+      <div style="width:48px;height:48px;background:rgba(0,184,122,.12);border:1px solid rgba(0,184,122,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.25rem;">🏠</div>
+      <div style="font-size:.7rem;font-weight:700;letter-spacing:2px;color:var(--green2);text-transform:uppercase;margin-bottom:.5rem;">AI Automation · Real Estate</div>
+      <h3 style="font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:.75rem;line-height:1.35;">How a real estate investor could build a deal flow machine without hiring a team</h3>
+      <p style="color:var(--gray);font-size:.88rem;line-height:1.6;margin-bottom:1.5rem;">Automated outreach, lead qualification, and follow-up system that keeps the pipeline full — even when you're closing.</p>
+      <div style="display:flex;align-items:center;gap:.5rem;color:var(--gold);font-weight:700;font-size:.85rem;">Read Case Study <span>→</span></div>
+      <div style="position:absolute;top:1rem;right:1rem;background:var(--gold);color:var(--navy);font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:3px;letter-spacing:1px;">CONCEPT</div>
+    </div>
+
+    <div onclick="window.open('casestudy-startup.html','_blank')" style="background:var(--navy2);border:1px solid rgba(240,192,64,.1);border-radius:12px;padding:2rem;cursor:pointer;transition:.3s;position:relative;overflow:hidden;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(240,192,64,.35)';this.style.boxShadow='0 20px 40px rgba(0,0,0,.3)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(240,192,64,.1)';this.style.boxShadow=''">
+      <div style="width:48px;height:48px;background:rgba(0,184,122,.12);border:1px solid rgba(0,184,122,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.25rem;">🚀</div>
+      <div style="font-size:.7rem;font-weight:700;letter-spacing:2px;color:var(--green2);text-transform:uppercase;margin-bottom:.5rem;">AI Automation · Startups</div>
+      <h3 style="font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:.75rem;line-height:1.35;">How an early-stage founder could build a sales pipeline that closes while they build</h3>
+      <p style="color:var(--gray);font-size:.88rem;line-height:1.6;margin-bottom:1.5rem;">AI-powered outreach, lead qualification, and follow-up that runs without the founder babysitting it.</p>
+      <div style="display:flex;align-items:center;gap:.5rem;color:var(--gold);font-weight:700;font-size:.85rem;">Read Case Study <span>→</span></div>
+      <div style="position:absolute;top:1rem;right:1rem;background:var(--gold);color:var(--navy);font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:3px;letter-spacing:1px;">CONCEPT</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's Talk</div>
+  <h2>Ready to <span class="green-accent">Close More Deals?</span></h2>
+  <div class="contact-inner">
+    <div class="contact-info">
+      <p contenteditable="false">Whether you're a real estate professional looking to close more deals, a small business owner wanting to automate operations, or an individual ready to leverage AI — let's build a system that works for you. Book a free Growth Assessment to identify the biggest opportunities in your business.</p>
+      <ul class="contact-highlights">
+        <li><span class="dot"></span><span contenteditable="false">Free Growth Assessment Call</span></li>
+        <li><span class="dot"></span><span contenteditable="false">Custom strategy tailored to your business or goals</span></li>
+        <li><span class="dot"></span><span contenteditable="false">No fluff — only results-focused conversation</span></li>
+        <li><span class="dot"></span><span contenteditable="false">Real estate, small business & AI expertise</span></li>
+      </ul>
+      <div style="margin-top:2rem;display:flex;flex-direction:column;gap:1rem;">
+        <a href="mailto:nate.youraiautomator@gmail.com" style="display:flex;align-items:center;gap:.75rem;color:var(--white);text-decoration:none;font-weight:600;transition:.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--white)'">
+          <div style="width:40px;height:40px;background:rgba(240,192,64,.1);border:1px solid rgba(240,192,64,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">📧</div>
+          nate.youraiautomator@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/nathan-jovinz/" target="_blank" style="display:flex;align-items:center;gap:.75rem;color:var(--white);text-decoration:none;font-weight:600;transition:.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--white)'">
+          <div style="width:40px;height:40px;background:rgba(0,119,181,.2);border:1px solid rgba(0,119,181,.4);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">💼</div>
+          linkedin.com/in/nathan-jovinz
+        </a>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-group"><label>Your Name</label><input type="text" id="contact-name" placeholder="e.g. John Smith"></div>
+      <div class="form-group"><label>Email Address</label><input type="email" id="contact-email" placeholder="you@example.com"></div>
+      <div class="form-group"><label>I Am A...</label>
+        <select id="contact-type">
+          <option>Entrepreneur / Startup</option>
+          <option>Individual seeking AI Automation</option>
+          <option>Property Manager</option>
+          <option>Real Estate Agent</option>
+          <option>Real Estate Broker</option>
+          <option>Real Estate Investor</option>
+          <option>Small Business Owner</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label>What's Your Biggest Challenge?</label><textarea id="contact-challenge" placeholder="Tell me about your current challenges..."></textarea></div>
+      <button class="submit-btn" onclick="submitAndBook()">📅 Book My Free Growth Assessment</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Nathan Jovinz</span> · AI-Powered Sales Growth & Marketing Systems</p>
+  <p style="margin-top:.5rem;font-size:.8rem;">Helping businesses close more deals through smarter systems.</p>
+  <div style="display:flex;justify-content:center;gap:2rem;margin-top:1rem;">
+    <a href="mailto:nate.youraiautomator@gmail.com" style="color:var(--gray);text-decoration:none;font-size:.85rem;transition:.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">📧 nate.youraiautomator@gmail.com</a>
+    <a href="https://www.linkedin.com/in/nathan-jovinz/" target="_blank" style="color:var(--gray);text-decoration:none;font-size:.85rem;transition:.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">💼 LinkedIn</a>
+  </div>
+</footer>
+
+<!-- CALENDLY MODAL -->
+<div class="cal-modal-overlay" id="cal-modal-overlay">
+  <div class="cal-modal">
+    <div class="cal-modal-header">
+      <span>📅 Book a Free Growth Assessment — Nathan Jovinz</span>
+      <button class="cal-modal-close" onclick="closeCalModal()">✕</button>
+    </div>
+    <iframe class="cal-iframe" id="cal-iframe" src="" title="Book a meeting"></iframe>
+  </div>
+</div>
+
+<!-- EDIT BAR -->
+<div class="edit-bar">
+  <div class="edit-mode-badge" id="edit-badge">✏️ Edit Mode ON</div>
+  <button class="lock-btn" id="lock-btn" onclick="toggleEditMode()">🔒 Edit My Site</button>
+</div>
+
+<!-- PASSWORD MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <h3>🔐 Owner Access</h3>
+    <p>Enter your password to enable edit mode</p>
+    <input type="password" id="pwd-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPwd()">
+    <div class="modal-error" id="pwd-error">Incorrect password. Try again.</div>
+    <div class="modal-btns">
+      <button class="modal-btn cancel" onclick="closeModal()">Cancel</button>
+      <button class="modal-btn confirm" onclick="checkPwd()">Unlock</button>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">✕</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+
+  // ---- PASSWORDS & EDIT MODE ----
+  var PASS = "nathan2025";
+  var editMode = false;
+
+  window.toggleEditMode = function() {
+    if (editMode) { exitEdit(); } else {
+      document.getElementById('modal-overlay').style.display = 'flex';
+      setTimeout(function(){ document.getElementById('pwd-input').focus(); }, 100);
+    }
+  };
+  window.closeModal = function() {
+    document.getElementById('modal-overlay').style.display = 'none';
+    document.getElementById('pwd-input').value = '';
+    document.getElementById('pwd-error').style.display = 'none';
+  };
+  window.checkPwd = function() {
+    var v = document.getElementById('pwd-input').value;
+    if (v === PASS) { closeModal(); enterEdit(); }
+    else { document.getElementById('pwd-error').style.display = 'block'; document.getElementById('pwd-input').value = ''; }
+  };
+  function enterEdit() {
+    editMode = true;
+    document.body.classList.add('edit-mode');
+    document.querySelectorAll('[contenteditable]').forEach(function(el){ el.setAttribute('contenteditable','true'); });
+    document.getElementById('lock-btn').textContent = '🔓 Exit Edit Mode';
+    document.getElementById('lock-btn').style.background = 'var(--green2)';
+    document.getElementById('edit-badge').style.display = 'block';
+    document.getElementById('upload-area').style.display = 'block';
+  }
+  function exitEdit() {
+    editMode = false;
+    document.body.classList.remove('edit-mode');
+    document.querySelectorAll('[contenteditable]').forEach(function(el){ el.setAttribute('contenteditable','false'); });
+    document.getElementById('lock-btn').textContent = '🔒 Edit My Site';
+    document.getElementById('lock-btn').style.background = 'var(--gold)';
+    document.getElementById('edit-badge').style.display = 'none';
+    document.getElementById('upload-area').style.display = 'none';
+  }
+
+  // ---- CALENDLY ----
+  var CALENDLY_URL = "https://calendly.com/nate-youraiautomator/30min";
+
+  window.openCalModal = function() {
+    document.getElementById('cal-iframe').src = CALENDLY_URL;
+    document.getElementById('cal-modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeCalModal = function() {
+    document.getElementById('cal-modal-overlay').classList.remove('open');
+    document.getElementById('cal-iframe').src = '';
+    document.body.style.overflow = '';
+  };
+  document.getElementById('cal-modal-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeCalModal();
+  });
+
+  var SHEET_URL = "https://script.google.com/macros/s/AKfycbwu29ihV0J0vCLNPM37BwomPCO1nNxIJoEC2F883ktQpriAys3rDP3Dyt7aW1W1TDUy/exec";
+
+  window.submitAndBook = function() {
+    var name = document.getElementById('contact-name').value.trim();
+    var email = document.getElementById('contact-email').value.trim();
+    var type = document.getElementById('contact-type').value;
+    var challenge = document.getElementById('contact-challenge').value.trim();
+    if (!name) { alert('Please enter your name.'); return; }
+    if (!email) { alert('Please enter your email address.'); return; }
+
+    // Send to Google Sheet
+    fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, type: type, challenge: challenge })
+    }).catch(function(err){ console.log('Sheet error:', err); });
+
+    // Open Calendly pre-filled
+    var params = new URLSearchParams({ name: name, email: email, a1: type + (challenge ? ' — ' + challenge : '') });
+    document.getElementById('cal-iframe').src = CALENDLY_URL + '?' + params.toString();
+    document.getElementById('cal-modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  // ---- LIGHTBOX ----
+  window.openLightbox = function(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  };
+  window.closeLightbox = function() {
+    document.getElementById('lightbox').classList.remove('open');
+  };
+
+  // ---- PORTFOLIO ----
+  var CATS = { marketing:'📣 Digital Marketing', automation:'🤖 AI Automations & Integration', graphics:'🎨 Graphics', plan:'📋 30-60-90 Plan' };
+  var COL_ORDER = ['marketing','automation','graphics','plan'];
+  var BASE = "https://nathanjovinz.github.io";
+  var activeTab = 'all';
+
+  var portfolioItems = [
+    {id:1,cat:'marketing',type:'pdf',src:BASE+'/pdfs/coach_consultant_acquisition_system.pdf',cover:BASE+'/images/dm_cover1.PNG',label:'Coach & Consultant Acquisition System'},
+    {id:2,cat:'marketing',type:'pdf',src:BASE+'/pdfs/luxury_condo_marketing_strategy (1).pdf',cover:BASE+'/images/dm_cover2.PNG',label:'Luxury Condo Marketing Strategy'},
+    {id:3,cat:'marketing',type:'pdf',src:BASE+'/pdfs/medical_aesthetics_growth_strategy.pdf',cover:BASE+'/images/dm_cover3.PNG',label:'Medical Aesthetics Growth Strategy'},
+    {id:4,cat:'automation',type:'image',src:BASE+'/images/Screenshot 2026-06-07 200836.png',label:'AI Automation Sample 1'},
+    {id:5,cat:'automation',type:'image',src:BASE+'/images/Screenshot 2026-06-07 200746.png',label:'AI Automation Sample 2'},
+    {id:6,cat:'graphics',type:'image',src:BASE+'/images/1.png',label:'Graphic Design 1'},
+    {id:7,cat:'graphics',type:'image',src:BASE+'/images/2.png',label:'Graphic Design 2'},
+    {id:8,cat:'graphics',type:'image',src:BASE+'/images/3.png',label:'Graphic Design 3'},
+    {id:9,cat:'plan',type:'image',src:BASE+'/images/30 day.PNG',label:'30 Day Plan'},
+    {id:10,cat:'plan',type:'image',src:BASE+'/images/060.PNG',label:'60 Day Plan'},
+  ];
+
+  function makeItem(item) {
+    var div = document.createElement('div');
+    div.className = 'portfolio-item';
+    if (item.type === 'image') {
+      div.innerHTML = '<img src="'+item.src+'" alt="'+item.label+'"><div class="portfolio-overlay"><span>View</span></div>';
+      div.onclick = function(){ openLightbox(item.src); };
+    } else if (item.type === 'pdf') {
+      if (item.cover) {
+        div.innerHTML = '<img src="'+item.cover+'" alt="'+item.label+'"><div class="portfolio-overlay"><span>📄 Open PDF</span></div>';
+      } else {
+        div.innerHTML = '<div class="portfolio-item-placeholder"><span style="font-weight:700;color:var(--gold);">PDF</span><span>'+item.label+'</span></div><div class="portfolio-overlay"><span>📄 Open PDF</span></div>';
+      }
+      div.onclick = function(){ window.open(item.src,'_blank'); };
+    } else if (item.type === 'video') {
+      div.innerHTML = '<video src="'+item.src+'" style="width:100%;height:100%;object-fit:cover;" muted></video><div class="portfolio-overlay"><span>▶ Play</span></div>';
+    } else {
+      div.innerHTML = '<div class="portfolio-item-placeholder"><span style="font-weight:700;color:var(--gold);font-size:.78rem;">'+(CATS[item.cat]||item.cat)+'</span><span style="font-size:.72rem;text-align:center;">'+item.label+'</span></div>';
+    }
+    return div;
+  }
+
+  function renderPortfolio() {
+    var grid = document.getElementById('portfolio-grid');
+    grid.innerHTML = '';
+    if (activeTab === 'all') {
+      grid.style.gridTemplateColumns = 'repeat(4,1fr)';
+      COL_ORDER.forEach(function(cat) {
+        var col = document.createElement('div');
+        col.className = 'portfolio-col';
+        portfolioItems.filter(function(i){ return i.cat === cat; }).forEach(function(item){ col.appendChild(makeItem(item)); });
+        if (editMode) {
+          var a = document.createElement('div');
+          a.className = 'portfolio-item';
+          a.style.cssText = 'border:2px dashed rgba(240,192,64,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;aspect-ratio:1/1;';
+          a.innerHTML = '<div style="text-align:center;color:var(--gold);"><div style="font-size:1.5rem;">＋</div><div style="font-weight:700;font-size:.75rem;">Add</div></div>';
+          a.onclick = function(){ activeTab = cat; document.getElementById('portfolio-upload').click(); };
+          col.appendChild(a);
+        }
+        grid.appendChild(col);
+      });
+    } else {
+      grid.style.gridTemplateColumns = 'repeat(3,1fr)';
+      portfolioItems.filter(function(i){ return i.cat === activeTab; }).forEach(function(item){ grid.appendChild(makeItem(item)); });
+      if (editMode) {
+        var a = document.createElement('div');
+        a.className = 'portfolio-item';
+        a.style.cssText = 'border:2px dashed rgba(240,192,64,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;';
+        a.innerHTML = '<div style="text-align:center;color:var(--gold);"><div style="font-size:2rem;">＋</div><div style="font-weight:700;font-size:.85rem;">Add Work Sample</div></div>';
+        a.onclick = function(){ document.getElementById('portfolio-upload').click(); };
+        grid.appendChild(a);
+      }
+    }
+  }
+
+  document.getElementById('portfolio-tabs').addEventListener('click', function(e) {
+    var tab = e.target.closest('.tab');
+    if (!tab) return;
+    document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+    tab.classList.add('active');
+    activeTab = tab.dataset.tab;
+    renderPortfolio();
+  });
+
+  window.handlePortfolioUpload = function(event) {
+    var files = Array.from(event.target.files);
+    var cats = ['marketing','automation','graphics','plan'];
+    var cat = activeTab === 'all' ? 'graphics' : (cats.includes(activeTab) ? activeTab : 'graphics');
+    files.forEach(function(file) {
+      var url = URL.createObjectURL(file);
+      var isPDF = file.type === 'application/pdf';
+      var isVideo = file.type.startsWith('video/');
+      portfolioItems.push({id:Date.now()+Math.random(),cat:cat,type:isPDF?'pdf':isVideo?'video':'image',src:url,label:file.name});
+    });
+    renderPortfolio();
+    event.target.value = '';
+  };
+
+  // ---- NAV HIGHLIGHT ----
+  var secs = document.querySelectorAll('section');
+  var navAs = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', function() {
+    var cur = '';
+    secs.forEach(function(s){ if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+    navAs.forEach(function(a){ a.style.color = a.getAttribute('href') === '#'+cur ? 'var(--gold)' : ''; });
+  });
+
+  renderPortfolio();
+
+}); // end DOMContentLoaded
+</script>
+</body>
+</html>
